@@ -12,31 +12,28 @@ function toggleEventListeners() {
   colorList.parentElement.addEventListener("click", toggleColorList);
   noteButton.addEventListener("click", createNewNote);
   clearButton.addEventListener("click", clearNotes);
+
   notes.addEventListener("click", deleteNote);
-  notes.addEventListener("click", editNote);
+  notes.addEventListener("dblclick", editNote);
   notes.addEventListener("click", saveNote);
 }
 
 function editNote(e) {
-  if (e.target.className === "edit-note") {
-    if (
-      e.target.nextElementSibling.className === "note-text" ||
-      e.target.nextElementSibling.hasAttribute("contenteditable", "false")
-    ) {
+  if (e.target.className === "edit") {
+    if (e.target.nextElementSibling.className === "note-text") {
       e.target.innerHTML = "s";
-      e.target.nextElementSibling.setAttribute("contenteditable", "true");
-      e.target.className = "save-note";
-      console.log(e.target);
+      e.target.nextElementSibling.contentEditable = true;
+      e.target.className = "save";
     }
   }
 }
 
 function saveNote(e) {
-  if (e.target.className === "save-note") {
+  if (e.target.className === "save") {
     if (e.target.nextElementSibling.innerHTML !== "") {
       e.target.innerHTML = "e";
-      e.target.nextElementSibling.setAttribute("contenteditable", "false");
-      e.target.className = "edit-note";
+      e.target.nextElementSibling.contentEditable = false;
+      e.target.className = "edit";
     }
   }
 }
@@ -57,7 +54,7 @@ function createNewNote() {
   let newNote = document.createElement("div");
   newNote.className = "note";
   newNote.innerHTML =
-    '<button class="delete-note">X</button><button class="edit-note">e</button><p class="note-text"></p>';
+    '<button class="delete-note">X</button><button class="edit">e</button><p class="note-text"></p>';
   notes.append(newNote);
 }
 

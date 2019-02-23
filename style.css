@@ -60,6 +60,9 @@ li {
   overflow: auto;
   margin: 2px;
   padding: 5px;
+  max-width: 100%;
+  overflow-x: hidden;
+  word-wrap: break-word;
 }
 
 #notes .note button.delete-note {
@@ -71,8 +74,8 @@ li {
   background: whitesmoke;
   margin: 1px;
 }
-#notes .note button.edit-note,
-#notes .note button.save-note {
+#notes .note button.edit,
+#notes .note button.save {
   height: 20px;
   width: 20px;
   padding: 2px;
