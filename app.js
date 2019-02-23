@@ -18,6 +18,36 @@ function toggleEventListeners() {
   notes.addEventListener("click", saveNote);
 }
 
+function storeNote(input) {
+  let noteArray;
+  if (localStorage.getItem("noteArray") === null) {
+    noteArray = [];
+  } else {
+    noteArray = JSON.parse(localStorage.getItem("noteArray"));
+  }
+  noteArray.push(input);
+
+  localStorage.setItem("noteArray", JSON.stringify(noteArray));
+}
+
+// Remove from LS
+function removeNote(input) {
+  let noteArray;
+  if (localStorage.getItem("noteArray") === null) {
+    noteArray = [];
+  } else {
+    noteArray = JSON.parse(localStorage.getItem("noteArray"));
+  }
+
+  noteArray.forEach(function(noteItem, index) {
+    if (input.textContent === noteItem) {
+      noteArray.splice(index, 1);
+    }
+  });
+
+  localStorage.setItem("noteArray", JSON.stringify(noteArray));
+}
+
 function editNote(e) {
   if (e.target.className === "edit") {
     if (e.target.nextElementSibling.className === "note-text") {
@@ -34,6 +64,7 @@ function saveNote(e) {
       e.target.innerHTML = "e";
       e.target.nextElementSibling.contentEditable = false;
       e.target.className = "edit";
+      storeNote(e.target.nextElementSibling.textContent);
     }
   }
 }
@@ -41,6 +72,7 @@ function saveNote(e) {
 function deleteNote(e) {
   if (e.target.classList.contains("delete-note")) {
     e.target.parentElement.remove();
+    removeNote(e.target.nextElementSibling.nextElementSibling);
   }
 }
 
