@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Note Taker</title>
+  </head>
+  <body>
+    <container id="page">
+      <container id="sidebar">
+        <ul class="options">
+          <li class="new-note">New Note</li>
+          <li class="note-colors">
+            Note Colors
+            <ul class="color-list">
+              <li class="color yellow">yellow</li>
+              <li class="color green">green</li>
+              <li class="color red">red</li>
+              <li class="color white">white</li>
+            </ul>
+          </li>
+          <container id="clear">
+            <button class="clear-notes">Clear All</button>
+          </container>
+        </ul>
+      </container>
+      <container id="notes"> </container>
+    </container>
+  </body>
+</html>
+
+<script src="app.js"></script>
