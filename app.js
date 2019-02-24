@@ -91,6 +91,7 @@ function clearNotes() {
   do {
     notes.removeChild(notes.firstChild);
   } while (notes.firstChild);
+  localStorage.clear();
 }
 
 function createNewNote() {
