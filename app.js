@@ -14,8 +14,19 @@ function toggleEventListeners() {
   clearButton.addEventListener("click", clearNotes);
 
   notes.addEventListener("click", deleteNote);
-  notes.addEventListener("dblclick", editNote);
+  notes.addEventListener("click", editNote);
   notes.addEventListener("click", saveNote);
+  document.addEventListener("DOMContentLoaded", loadNotes);
+}
+
+function loadNotes() {
+  let localNotes = JSON.parse(localStorage.getItem("noteArray"));
+  localNotes.forEach(item => {
+    let newNote = document.createElement("div");
+    newNote.className = "note";
+    newNote.innerHTML = `<button class="delete-note">X</button><button class="edit">e</button><p class="note-text">${item}</p>`;
+    notes.append(newNote);
+  });
 }
 
 function storeNote(input) {
