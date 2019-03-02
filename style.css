@@ -12,11 +12,28 @@ li {
   list-style: none;
 }
 
-#sidebar ul li ul {
-  display: none;
+#sidebar ul {
+  display: block;
+  width: 150px;
 }
-#sidebar ul li ul {
+
+#sidebar ul.options li {
+  padding: 2px;
+  margin-bottom: 20px;
+}
+#sidebar ul li:hover {
+  cursor: default;
+}
+
+#sidebar ul li ul.color-list {
+  display: none;
+  margin-bottom: -30px;
+  margin-top: 10px;
   width: 50px;
+}
+
+#sidebar .clear-notes {
+  color: rgb(124, 18, 18);
 }
 
 /* colors */
@@ -54,7 +71,7 @@ li {
   grid-template-columns: 20px 20px auto;
   width: 200px;
   height: 200px;
-  border: 1px solid black;
+  border: 1px solid rgba(226, 232, 157, 0.8);
   background-color: rgb(237, 237, 130);
 }
 #notes .note p {
@@ -64,6 +81,11 @@ li {
   max-width: 100%;
   overflow-x: hidden;
   word-wrap: break-word;
+  cursor: default;
+}
+
+#notes .note p:focus {
+  outline: none;
 }
 
 #notes .note button.delete-note {
@@ -73,6 +95,7 @@ li {
   align-content: center;
   color: red;
   background: whitesmoke;
+  border: none;
   margin: 1px;
 }
 #notes .note button.edit,
@@ -83,5 +106,13 @@ li {
   align-content: center;
   color: black;
   background: whitesmoke;
+  border: none;
+  border-left: 1px solid rgba(0, 0, 0, 0.192);
   margin: 1px;
+}
+
+#notes .note button.edit,
+#notes .note button.delete-note,
+#notes .note button.save:focus {
+  outline: none;
 }
