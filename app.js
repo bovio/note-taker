@@ -6,6 +6,13 @@ const clearButton = document.querySelector(".clear-notes");
 const noteContent = document.querySelector(".note-text");
 const editButton = document.querySelector(".edit-note");
 
+// TO FIX:
+// Editing previously stored note keeps both original and updated note
+// Putting multiple notes on deck, all blanks will disappear when one is saved
+
+// Features to add:
+// Colors for individual notes, stored
+
 let currentBackgroundColor;
 
 class Note {
